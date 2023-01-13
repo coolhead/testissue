@@ -7,11 +7,21 @@ on:
      branches: [ main ]    
 
   workflow_dispatch:  
+env:
+  ISSUE_BODY: ${{ github.event.issue.body }}
+  ISSUE_COMMENTS: ${{ github.event.comment.body }}
+  ISSUE_NUMBER: ${{ github.event.issue.number }}
+  ASSIGNEES_LIST: ${{ join(github.event.issue.assignees.*.login, ',') }}  
 
 jobs:
   check_approval:  
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2    
+      with:
+          ISSUE_BODY: $ISSUE_BODY
+          ISSUE_COMMENTS: $ISSUE_COMMENTS
+          ISSUE_NUMBER: $ISSUE_NUMBER
+          ASSIGNEES_LIST: $ASSIGNEES_LIST
     - name: print body
-      run: echo ${{ github.event.comment.body }}
+      run: echo ${{ github.event.comment.body }}          
