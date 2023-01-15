@@ -1,0 +1,24 @@
+name: Artifactory pull
+on:
+ # issues:
+ #   types: [opened, edited]
+  push:
+    branches: [ main ]
+  
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  jfrog:
+    runs-on: [ubuntu-latest]
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - name: Check required package
+        run: |
+            echo "Check package.json file $line for the required package and version to be installed on jfrog"
+            while IFS="" read -r line ||  [ -n "$line" ]
+            do
+               cat "package.json" > "$line"	
+               echo "$line"
+            done <"${{ github.workspace }}/package.json"
