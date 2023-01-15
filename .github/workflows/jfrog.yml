@@ -16,10 +16,10 @@ jobs:
     steps:
       - name: Check required package
         run: |
-            'ls ${{ github.workspace }}'
+            echo "ls ${{ github.workspace }}"
             echo "Check package.json file for the required package and version to be installed on jfrog"
             while IFS="" read -r line ||  [ -n "$line" ]
             do
                cat "package.json" > "$line"	
                echo "$line"
-            done < "${{ github.workspace }}/package.json"
+            done <"${{ github.workspace }}/package.json"
