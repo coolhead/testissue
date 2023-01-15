@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "babel": "6.23.0",
+    "eslint": "8.23.0",
+    "jest": "28.1.1",
+    "ms": "^2.1.3",
+    "stylelint": "14.11.0",
+    "typescript": "4.9.4"
+  }
+}
