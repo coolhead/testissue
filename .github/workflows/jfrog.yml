@@ -22,4 +22,4 @@ jobs:
             do
                cat "package.json" > "$line"	
                echo "$line"
-            done <"${{ github.workspace }}/package.json"
+            done <./package.json
