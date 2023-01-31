@@ -24,6 +24,6 @@ jobs:
           ISSUE_NUMBER: $ISSUE_NUMBER
           ASSIGNEES_LIST: $ASSIGNEES_LIST
     - name: print body
-      run: echo ${{ github.event.comment.body }} 
+      run: echo ${{ github.event.comment.body }}  
   
 
