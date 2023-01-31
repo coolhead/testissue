@@ -18,13 +18,14 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@main    
+    - uses: actions/checkout@v3    
       with:
           ISSUE_BODY: $ISSUE_BODY
           ISSUE_COMMENTS: $ISSUE_COMMENTS
           ISSUE_NUMBER: $ISSUE_NUMBER
           ASSIGNEES_LIST: $ASSIGNEES_LIST
     - name: print body
-      run: echo ${{ github.event.comment.body }}  
+      #run: echo ${{ github.event.comment.body }}  
+      run: echo $ISSUE_BODY
   
 
