@@ -26,15 +26,19 @@ jobs:
           ASSIGNEES_LIST: $ASSIGNEES_LIST
     - name: print body
       run: echo ${{ github.event.comment.body }} 
-      
-      if: contains(github.event.issue.body, '/approve')      
-    - name: Install npm
-      uses: actions/setup-node@v3
-      with:
-         node-version: '16'
+  perform_jfrog_remote_pull:
+      runs-on: ubuntu-latest
+      name: Perform JFrog Pull Remote Package
+      needs: check_approval
+ # if: contains(github.event.issue.body, '/approve')  
+      steps:
+         - name: Install npm
+         - uses: actions/setup-node@v3
+           with:
+             node-version: '16'
       # - run: npm cache clean --force
-    - name: Settingup JFrog CLI
-      uses: jfrog/setup-jfrog-cli@v3  
+         - name: Settingup JFrog CLI
+         - uses: jfrog/setup-jfrog-cli@v3  
 
-    - name: Check jfrog cli version
-      run: jf --version
+         - name: Check jfrog cli version
+           run: jf --version
