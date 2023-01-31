@@ -41,4 +41,4 @@ jobs:
          - uses: jfrog/setup-jfrog-cli@v3  
 
          - name: Check jfrog cli version
-           run: jf --version
+         - run: jf --version
