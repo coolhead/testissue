@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@latest    
+    - uses: actions/checkout@main    
       with:
           ISSUE_BODY: $ISSUE_BODY
           ISSUE_COMMENTS: $ISSUE_COMMENTS
