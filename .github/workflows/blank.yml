@@ -32,11 +32,13 @@ jobs:
       needs: check_approval
  # if: contains(github.event.issue.body, '/approve')  
       steps:
-         - name: Install npm
-         - uses: actions/setup-node@v3
-           with:
-             node-version: '16'
-         - name: Settingup JFrog CLI
-         - uses: jfrog/setup-jfrog-cli@v3  
-         - name: Check jfrog cli version
-         - run: jf --version
+      - name: Install npm
+        uses: actions/setup-node@v3
+        with:
+           node-version: '16'
+
+      - name: Settingup JFrog CLI
+        uses: jfrog/setup-jfrog-cli@v3  
+
+      - name: Check jfrog cli version
+        run: jf --version
