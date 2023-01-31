@@ -16,6 +16,7 @@ env:
 jobs:
   check_approval:  
     runs-on: ubuntu-latest
+    if: contains(github.event.issue.body, '/approve')
     steps:
     - uses: actions/checkout@v3    
       with:
@@ -24,4 +25,15 @@ jobs:
           ISSUE_NUMBER: $ISSUE_NUMBER
           ASSIGNEES_LIST: $ASSIGNEES_LIST
     - name: print body
-      run: echo ${{ github.event.comment.body }}          
+      run: echo ${{ github.event.comment.body }} 
+      
+    - name: Install npm
+      uses: actions/setup-node@v3
+      with:
+         node-version: '16'
+      # - run: npm cache clean --force
+    - name: Settingup JFrog CLI
+      uses: jfrog/setup-jfrog-cli@v3  
+
+    - name: Check jfrog cli version
+      run: jf --version
