@@ -10,6 +10,6 @@ jobs:
   steps:
   - name: print package name and version
     #run: echo "$BODY" 
-    run: head -2 "$BODY" | tail -1 | cut -d ':' -f 1
+    run: head -2 "$BODY"
   env:
     BODY: ${{ github.event.issue.body }}
