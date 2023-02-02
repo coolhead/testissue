@@ -1,7 +1,8 @@
 name: pull_jfrog_package
 on:
-  issues:
-    types: [opened, edited]
+#  issues:
+#    types: [opened, edited]
+  issue_comment:
 
 jobs:
  check_approval:
