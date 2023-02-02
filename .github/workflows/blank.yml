@@ -10,6 +10,6 @@ jobs:
   steps:
   - name: print body
     #run: echo "$BODY" 
-    run: cat "$BODY" | head -2 | tail -1
+    run: cat "$BODY" | head -2
   env:
     BODY: ${{ github.event.issue.body }}
