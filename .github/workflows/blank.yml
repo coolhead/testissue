@@ -8,8 +8,8 @@ jobs:
   runs-on: ubuntu-latest
   if: contains(github.event.comment.body, 'approved')
   steps:
-  - name: print body
+  - name: print package name and version
     #run: echo "$BODY" 
-    run: cat "$BODY" | head -2
+    run: sed -n '2p' "$BODY"
   env:
     BODY: ${{ github.event.issue.body }}
