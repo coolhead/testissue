@@ -2,23 +2,19 @@ name: pull_jfrog_package
 on:
   issues:
     types: [opened, edited]
-  
-  push:
-     branches: [ main ]    
+  issue_comment:
+   - run: echo ${{ github.event.comment.body }}
+   - run: echo ${{ github.event.changes.body.from }}
 
-  workflow_dispatch: 
- 
 jobs:
-   issue_commented:
-    # This job only runs for issue comments
-    name: Issue comment
-    if: ${{ !github.event.issue.pull_request }}
-    runs-on: ubuntu-latest
-    steps:
-      - run: |
-          echo A comment on issue $COMMENT
-        env:
-          COMMENT: ${{ github.event.comment.body }}
+ dump:
+  runs-on: ubuntu-latest
+  steps:
+  - name: $github
+    run:   echo "$GITHUB_CONTEXT"
+    env:
+     GITHUB_CONTEXT: ${{ toJson(github) }}
+
 
        
       
