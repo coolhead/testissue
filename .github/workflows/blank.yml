@@ -8,11 +8,13 @@ on:
 jobs:
  print:
   runs-on: ubuntu-latest
+  if: contains(github.event.comment.body, 'approved')	
   steps:
   - name: print body
     run: echo "$BODY"  
   env:
-    BODY: ${{ github.event.comment.body }}
+    BODY: ${{ github.event.issue.body }}
+     
 
 
 
