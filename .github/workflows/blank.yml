@@ -1,10 +1,7 @@
 name: pull_jfrog_package
 on:
-  issues:
-    types: [opened, edited]
   issue_comment:
-   - run: echo ${{ github.event.comment.body }}
-   - run: echo ${{ github.event.changes.body.from }}
+    types: [opened, edited]
 
 jobs:
  dump:
