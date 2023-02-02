@@ -1,6 +1,6 @@
 name: pull_jfrog_package
 on:
-  issue_comment:
+  issues:
     types: [opened, edited]
 
 jobs:
