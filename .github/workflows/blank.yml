@@ -29,7 +29,8 @@ jobs:
       uses: peter-evans/find-comment@v2
       id: fc
       with:
-        body-includes: search "approved"
+        issue-number: 1
+        body-regex: '^.*search string 1.*$'
        
       
 
