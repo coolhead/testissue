@@ -14,15 +14,17 @@ env:
   ISSUE_NUMBER: ${{ github.event.issue.number }}
   ASSIGNEES_LIST: ${{ join(github.event.issue.assignees.*.login, ',') }}   
 jobs:
-  check_approval:  
+   issue_commented:
+    # This job only runs for issue comments
+    name: Issue comment
+    if: ${{ !github.event.issue.pull_request }}
     runs-on: ubuntu-latest
-    
     steps:
-    - name: Find Comment
-      uses: peter-evans/find-comment@v2
-      id: fc
-      with:
-        body-regex: '^.*search approved .*$'
+      - run: |
+          echo A comment on issue $COMMENT
+        env:
+          COMMENT: ${{ github.event.comment.body }}
+
        
       
 
