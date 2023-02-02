@@ -1,27 +1,15 @@
-name: pull_jfrog_package
+name: check_issue_approval
 on:
-#  issues:
-#    types: [opened, edited]
   issue_comment:
-
+    types: [opened, edited]
+    
 jobs:
- check_approval:
+ check-issue:
   runs-on: ubuntu-latest
   if: contains(github.event.comment.body, 'approved')
   steps:
-  - name: print_issue_body
-    run: |
-       while IFS= read -r line
-         do
-           echo "$line"
-         done < "$BODY"
+  - name: print body
+    #run: echo "$BODY" 
+    run: cat "$BODY" | head -2 | tail -1
   env:
-    BODY: ${{ github.event.issue.body }}   
-
-# while IFS= read -r line; do cat "$line"; done < "$BODY"
-
-
-
-       
-      
-
+    BODY: ${{ github.event.issue.body }}
