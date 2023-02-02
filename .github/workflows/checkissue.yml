@@ -1,3 +1,7 @@
+name: get_issue_info
+on:
+  issues:
+    types: [opened, edited]
 jobs:
   issue_parser:
     runs-on: ubuntu-latest
