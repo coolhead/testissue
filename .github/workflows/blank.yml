@@ -8,11 +8,6 @@ on:
 
   workflow_dispatch: 
  
-env:
-  ISSUE_BODY: ${{ github.event.issue.body }}
-  ISSUE_COMMENTS: ${{ github.event.comment.body }}
-  ISSUE_NUMBER: ${{ github.event.issue.number }}
-  ASSIGNEES_LIST: ${{ join(github.event.issue.assignees.*.login, ',') }}   
 jobs:
    issue_commented:
     # This job only runs for issue comments
