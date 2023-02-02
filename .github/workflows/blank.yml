@@ -10,9 +10,10 @@ jobs:
   runs-on: ubuntu-latest
   steps:
   - name: print body
+    run: echo "$BODY"  
   env:
     BODY: ${{ github.event.comment.body }}
-    run: echo "$BODY"
+
 
 
        
