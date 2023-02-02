@@ -9,20 +9,16 @@ jobs:
   runs-on: ubuntu-latest
   if: contains(github.event.comment.body, 'approved')
   steps:
-  - name: print body
-    run: echo "$BODY"  
-  env:
-    BODY: ${{ github.event.issue.body }}
-  
-    name: Get required package
+  - name: print_issue_body
     run: |
       while IFS="" read -r line ||  [ -n "$line" ]
             do
                #echo "Checking file $line for the package and version"
                cat "$BODY" > "$line"
                echo "$line"
-            done <"$BODY"   
-     
+            done <"$BODY" 
+  env:
+    BODY: ${{ github.event.issue.body }}   
 
 
 
