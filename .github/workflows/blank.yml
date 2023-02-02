@@ -6,13 +6,13 @@ on:
   workflow_dispatch: 
 
 jobs:
- dump:
+ print:
   runs-on: ubuntu-latest
   steps:
-  - name: $github
-    run:   echo "$GITHUB_CONTEXT"
-    env:
-     GITHUB_CONTEXT: ${{ toJson(github) }}
+  - name: print body
+  env:
+    BODY: ${{ github.event.comment.body }}
+    run: echo "$BODY"
 
 
        
