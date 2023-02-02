@@ -3,6 +3,8 @@ on:
   issue_comment:
     types: [opened, edited]
 
+  workflow_dispatch: 
+
 jobs:
  dump:
   runs-on: ubuntu-latest
