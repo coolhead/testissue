@@ -15,7 +15,7 @@ jobs:
      uses: peter-murray/issue-body-parser-action@v2
    - name: Parse Issue Body
      if : steps.issue_body_parser_request.outputs.payload != 'Name'
-#     id: issue_body_parser
+     id: issue_body_parser
      env:
          VERSION: ${{ fromJson(steps.issue_body_parser_request.outputs.payload).version }}
      run: |
