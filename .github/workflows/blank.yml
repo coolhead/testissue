@@ -21,7 +21,7 @@ jobs:
         uses: zlus/action-extract-issues@1.0.0
         id: set_issues
         env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         with:
           #match-reg: 'test +#(\d+)' # optional
           match-reg: 'Package Name' # optional
