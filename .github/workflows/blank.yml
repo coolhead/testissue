@@ -8,8 +8,23 @@ jobs:
   runs-on: ubuntu-latest
   if: contains(github.event.comment.body, 'approved')
   steps:
-  - name: print package name and version
-    #run: echo "$BODY" 
-    run: head -2 "$BODY"
-  env:
-    BODY: ${{ github.event.issue.body }}
+#  - name: print package name and version
+#    #run: echo "$BODY" 
+#    run: grep -m 2 -o '.*' "$BODY"
+#  env:
+#    BODY: ${{ github.event.issue.body }}
+    
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Get Issues
+        uses: zlus/action-extract-issues@1.0.0
+        id: set_issues
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+        with:
+          #match-reg: 'test +#(\d+)' # optional
+          match-reg: 'Package Name' # optional
+
+      - name: Log
+        run: echo ${{ steps.set_issues.outputs.issues }}    
