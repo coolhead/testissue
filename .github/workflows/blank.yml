@@ -8,12 +8,13 @@ jobs:
   runs-on: ubuntu-latest
   if: contains(github.event.comment.body, 'approved')
   steps:
-  - name: Read VERSION BODY
-    id: getversion
-    run: echo "::set-output name=version::$(cat VERSION)"
-  - name: Test output
-    run: echo ${{ steps.vars.outputs.version }}
-    #run: echo "$BODY" 
+#  - name: Read VERSION BODY
+#    id: getversion
+#    run: echo "::set-output name=version::$(cat VERSION)"
+#  - name: Test output
+#    run: echo ${{ steps.vars.outputs.version }}
+   - name: read issue body
+     run: echo "$BODY" 
 #    run: grep -m 2 -o '.*' "$BODY"
   env:
     BODY: ${{ github.event.issue.body }}
