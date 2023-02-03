@@ -8,7 +8,7 @@ jobs:
   runs-on: ubuntu-latest
   if: contains(github.event.comment.body, 'approved')
   steps:
-   - name: read issue body
+#   - name: read issue body
 #     run: echo "$BODY" 
 #  env:
 #    BODY: ${{ github.event.issue.body }}
@@ -18,7 +18,6 @@ jobs:
      id: issue_body_parser
      with:
        github_token: ${{ secrets.GH_TOKEN }}
-    # This is assuming that you are triggering off the issue, otherwise you will need to know the issue number
        issue_id: ${{ github.event.issue.number }}
        payload_marker: target_payload
     
