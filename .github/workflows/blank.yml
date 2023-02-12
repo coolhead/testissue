@@ -13,11 +13,11 @@ jobs:
     steps:
       - name: Check required package
         run: |
-           echo $BODY
-           VAR=$(echo $BODY | grep -oP '^[\w]@\d\.\d\.\d')
-           echo $VAR
-           echo $GITHUB_ISSUE_BODY
-           VAR1=$(echo $GITHUB_ISSUE_BODY | grep -Eo '^[\w]@[^]*')
-           echo $VAR1
+           # echo $BODY
+           # VAR=$(echo $BODY | grep -oP '^[\w]@\d\.\d\.\d')
+           # echo $VAR
+           # echo $GITHUB_ISSUE_BODY
+           VAR1=$(echo $GITHUB_ISSUE_BODY | grep -Eo '\w@[.*]')
+           echo "Value of the variable is :" $VAR1
     
  
