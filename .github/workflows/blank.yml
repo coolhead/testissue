@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: Check required package
         run: |
-           VAR=$(echo $BODY | grep -EoP '\w\@\d\.\d\.\d')
+           VAR=$(echo $BODY | grep -oP '\w\@\d\.\d\.\d')
            echo $VAR
     
  
