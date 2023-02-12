@@ -17,7 +17,8 @@ jobs:
            # VAR=$(echo $BODY | grep -oP '^[\w]@\d\.\d\.\d')
            # echo $VAR
            # echo $GITHUB_ISSUE_BODY
-           VAR1=$(echo $GITHUB_ISSUE_BODY | grep -Eo '\w@[.*]')
+           # VAR1=$(echo $GITHUB_ISSUE_BODY | grep -Eo '[^\w]@[.*]')
+           VAR1=$(echo $GITHUB_ISSUE_BODY | grep '@')
            echo "Value of the variable is :" $VAR1
     
  
