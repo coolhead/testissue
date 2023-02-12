@@ -2,23 +2,17 @@ name: check_issue_approval
 on:
   issue_comment:
     types: [opened, edited]
-    
-jobs:
- check-issue:
-  runs-on: ubuntu-latest
-  if: contains(github.event.comment.body, 'approved')
-  steps:
-#   - name: read issue body
-#     run: echo "$BODY" 
-#  env:
-#    BODY: ${{ github.event.issue.body }}
 
-   - name: Parse Issue Body
-     uses: peter-murray/issue-body-parser-action@v1
-     id: issue_body_parser
-     with:
-       github_token: ${{ secrets.GH_TOKEN }}
-       issue_id: ${{ github.event.issue.number }}
-       payload_marker: Package Version
+jobs:
+ check_issue_approval:
+    runs-on: ubuntu-latest
+    if: contains(github.event.comment.body, '/approve')
+    outputs: 
+      approved: ${{ steps.check-approval.outputs.approved }}
+    steps:
+      - name: Check required package
+        run: |
+           VAR=$(echo $GITHUB_ISSUE_BODY | grep -Eo 'packageName@[^]+')
+           echo $VAR
     
  
