@@ -2,7 +2,8 @@ name: check_issue_approval
 on:
   issue_comment:
     types: [opened, edited]
-
+env:
+    BODY: ${{ github.event.issue.body }}
 jobs:
  check_issue_approval:
     runs-on: ubuntu-latest
@@ -12,7 +13,7 @@ jobs:
     steps:
       - name: Check required package
         run: |
-           VAR=$(echo $GITHUB_ISSUE_BODY | grep -Eo 'packageName@\[\^0\-9\]\.\[\^0\-9\]\.\[\^0\-9\]')
+           VAR=$(echo $BODY | grep -Eo 'husky@[^0-9]\.[^0-9]\.[^0-9]')
            echo $VAR
     
  
