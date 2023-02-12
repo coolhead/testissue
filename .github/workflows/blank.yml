@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Check required package
         run: |
-           VAR=$(echo $GITHUB_ISSUE_BODY | grep -Eo 'packageName@[^]+')
+           VAR=$(echo $GITHUB_ISSUE_BODY | grep -Eo 'packageName@[^]*')
            echo $VAR
     
  
